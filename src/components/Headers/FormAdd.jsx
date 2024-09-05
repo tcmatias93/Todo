@@ -9,8 +9,13 @@ const FormAdd = () => {
 
   const addNewTask = (event) => {
     event.preventDefault();
+    const task = {
+      id: crypto.randomUUID(),
+      task: newrTask,
+      completed: false,
+    };
 
-    dispatch(addTask(newrTask));
+    dispatch(addTask(task));
     setNewTask("");
   };
 

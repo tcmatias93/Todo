@@ -1,22 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getTask, setTask } from "../utils/localStorage";
 
-const initialState = [
-  {
-    id: "1",
-    task: "casa",
-    completed: true,
-  },
-  {
-    id: "2",
-    task: "limpiar",
-    completed: false,
-  },
-  {
-    id: "3",
-    task: "ordenar",
-    completed: true,
-  },
-];
+const initialState = getTask("task") || [];
 
 const taskSlice = createSlice({
   name: "task",
@@ -24,12 +9,9 @@ const taskSlice = createSlice({
   reducers: {
     addTask(state, action) {
       const contetn = action.payload;
-      console.log("contetn: ", contetn);
-      state.push({
-        id: "4",
-        task: contetn,
-        completed: false,
-      });
+      const updatedTasks = [...state, contetn];
+      setTask("task", updatedTasks);
+      return updatedTasks;
     },
   },
 });
