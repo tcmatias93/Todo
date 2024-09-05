@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../../reducer/taskReducer";
+import { PlusIcon } from "@heroicons/react/24/solid";
 
 const FormAdd = () => {
   const [newrTask, setNewTask] = useState("");
@@ -14,18 +15,26 @@ const FormAdd = () => {
   };
 
   return (
-    <div>
-      <h1>My task list</h1>
-      <form onSubmit={addNewTask}>
-        <label>New task </label>
+    <form onSubmit={addNewTask} className="todo">
+      <div className="wrapper">
         <input
           type="text"
+          className="input"
           value={newrTask}
           onChange={(e) => setNewTask(e.target.value)}
+          required
+          autoFocus
+          maxLength={100}
+          placeholder="Enter Task"
         />
-        <button type="submit">ADD</button>
-      </form>
-    </div>
+        <label className="label" htmlFor="task">
+          New task
+        </label>
+      </div>
+      <button type="submit" className="btn">
+        <PlusIcon />
+      </button>
+    </form>
   );
 };
 

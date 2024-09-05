@@ -2,16 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [
   {
-    id: "",
+    id: "1",
     task: "casa",
+    completed: true,
   },
   {
-    id: "",
+    id: "2",
     task: "limpiar",
+    completed: false,
   },
   {
-    id: "",
+    id: "3",
     task: "ordenar",
+    completed: true,
   },
 ];
 
@@ -23,8 +26,9 @@ const taskSlice = createSlice({
       const contetn = action.payload;
       console.log("contetn: ", contetn);
       state.push({
-        id: "",
+        id: "4",
         task: contetn,
+        completed: false,
       });
     },
   },

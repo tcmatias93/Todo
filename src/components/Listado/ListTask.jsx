@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import styles from "./ListTask.module.css";
+import TaskItem from "./TaskItem";
 
 const ListTask = () => {
   const list = useSelector((state) => state.task);
@@ -6,13 +8,11 @@ const ListTask = () => {
   console.log("list: ", list);
 
   return (
-    <div>
-      <ul>
-        {list.map((task, id) => (
-          <li key={id}>{task.task}</li>
-        ))}
-      </ul>
-    </div>
+    <ul className={styles.tasks}>
+      {list.map((task, id) => (
+        <TaskItem key={id} task={task} />
+      ))}
+    </ul>
   );
 };
 
