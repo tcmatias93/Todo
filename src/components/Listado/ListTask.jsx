@@ -6,11 +6,14 @@ const ListTask = () => {
   const list = useSelector((state) => state.task);
 
   console.log("list: ", list);
+  if (list.length === 0) {
+    return null;
+  }
 
   return (
     <ul className={styles.tasks}>
       {list.map((task, id) => (
-        <TaskItem key={id} task={task} />
+        <TaskItem key={id} tasks={task} />
       ))}
     </ul>
   );
